@@ -1,0 +1,46 @@
+apps/web/src/components/organisms/header.tsx(17,40): error TS2349: This expression is not callable.
+  No constituent of type 'Atom<{ data: { user: StripEmptyObjects<{ id: string; createdAt: Date; updatedAt: Date; email: string; emailVerified: boolean; name: string; image?: string | null | undefined; }>; session: StripEmptyObjects<...>; } | null; error: BetterFetchError | null; isPending: boolean; isRefetching: boolean; refetch: (queryParam...' is callable.
+apps/web/src/components/organisms/header.tsx(49,36): error TS2322: Type '{ children: Element; asChild: true; }' is not assignable to type 'IntrinsicAttributes & Props<unknown>'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & Props<unknown>'.
+apps/web/src/components/organisms/header.tsx(60,35): error TS2322: Type '{ children: Element; asChild: true; }' is not assignable to type 'IntrinsicAttributes & MenuItemProps & { inset?: boolean | undefined; variant?: "default" | "destructive" | undefined; }'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & MenuItemProps & { inset?: boolean | undefined; variant?: "default" | "destructive" | undefined; }'.
+apps/web/src/components/organisms/header.tsx(63,35): error TS2322: Type '{ children: Element; asChild: true; }' is not assignable to type 'IntrinsicAttributes & MenuItemProps & { inset?: boolean | undefined; variant?: "default" | "destructive" | undefined; }'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & MenuItemProps & { inset?: boolean | undefined; variant?: "default" | "destructive" | undefined; }'.
+apps/web/src/components/organisms/header.tsx(77,49): error TS2322: Type '{ children: Element; variant: "ghost"; size: "sm"; asChild: true; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & VariantProps<(props?: (ConfigVariants<{ variant: { default: string; outline: string; secondary: string; ghost: string; destructive: string; link: string; }; size: { ...; }; }> & ClassProp) | undefined) => string>'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & ButtonProps & VariantProps<(props?: (ConfigVariants<{ variant: { default: string; outline: string; secondary: string; ghost: string; destructive: string; link: string; }; size: { ...; }; }> & ClassProp) | undefined) => string>'.
+apps/web/src/components/organisms/header.tsx(80,33): error TS2322: Type '{ children: Element; size: "sm"; asChild: true; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & VariantProps<(props?: (ConfigVariants<{ variant: { default: string; outline: string; secondary: string; ghost: string; destructive: string; link: string; }; size: { ...; }; }> & ClassProp) | undefined) => string>'.
+  Property 'asChild' does not exist on type 'IntrinsicAttributes & ButtonProps & VariantProps<(props?: (ConfigVariants<{ variant: { default: string; outline: string; secondary: string; ghost: string; destructive: string; link: string; }; size: { ...; }; }> & ClassProp) | undefined) => string>'.
+apps/web/src/lib/apollo-client.ts(6,10): error TS2305: Module '"@apollo/experimental-nextjs-app-support/ssr"' has no exported member 'registerApolloClient'.
+apps/gateway/src/app/app.module.ts(12,21): error TS7031: Binding element 'req' implicitly has an 'any' type.
+apps/users-subgraph/src/lib/auth.ts(2,1): error TS6133: 'mikro' is declared but its value is never read.
+apps/users-subgraph/src/lib/auth.ts(2,10): error TS2305: Module '"@mikro-orm/core"' has no exported member 'mikro'.
+apps/users-subgraph/src/users/application/handlers/get-me.handler.ts(11,38): error TS1272: A type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+apps/users-subgraph/src/users/application/handlers/get-users.handler.ts(3,1): error TS6133: 'User' is declared but its value is never read.
+apps/users-subgraph/src/users/application/handlers/get-users.handler.ts(11,38): error TS1272: A type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+apps/users-subgraph/src/users/application/handlers/get-users.handler.ts(18,19): error TS6133: 'totalCount' is declared but its value is never read.
+apps/users-subgraph/src/users/auth.controller.ts(8,32): error TS1272: A type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+apps/users-subgraph/src/users/auth.controller.ts(8,53): error TS1272: A type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+apps/users-subgraph/src/users/auth.controller.ts(9,30): error TS2554: Expected 1 arguments, but got 2.
+apps/users-subgraph/src/users/domain/entities/session.entity.ts(1,10): error TS2305: Module '"@mikro-orm/core"' has no exported member 'Entity'.
+apps/users-subgraph/src/users/domain/entities/session.entity.ts(1,18): error TS2724: '"@mikro-orm/core"' has no exported member named 'PrimaryKey'. Did you mean 'IPrimaryKey'?
+apps/users-subgraph/src/users/domain/entities/session.entity.ts(1,30): error TS2305: Module '"@mikro-orm/core"' has no exported member 'Property'.
+apps/users-subgraph/src/users/domain/entities/session.entity.ts(1,40): error TS2305: Module '"@mikro-orm/core"' has no exported member 'ManyToOne'.
+apps/users-subgraph/src/users/domain/entities/user.entity.ts(1,10): error TS2305: Module '"@mikro-orm/core"' has no exported member 'Entity'.
+apps/users-subgraph/src/users/domain/entities/user.entity.ts(1,18): error TS2724: '"@mikro-orm/core"' has no exported member named 'PrimaryKey'. Did you mean 'IPrimaryKey'?
+apps/users-subgraph/src/users/domain/entities/user.entity.ts(1,30): error TS2305: Module '"@mikro-orm/core"' has no exported member 'Property'.
+apps/users-subgraph/src/users/domain/entities/user.entity.ts(1,40): error TS2305: Module '"@mikro-orm/core"' has no exported member 'Unique'.
+apps/users-subgraph/src/users/infrastructure/repositories/mikro-orm-user.repository.ts(28,46): error TS2339: Property 'persistAndFlush' does not exist on type 'EntityManager<IDatabaseDriver<Connection>>'.
+apps/users-subgraph/src/users/users.module.ts(13,7): error TS7034: Variable 'CommandHandlers' implicitly has type 'any[]' in some locations where its type cannot be determined.
+apps/users-subgraph/src/users/users.module.ts(28,8): error TS7005: Variable 'CommandHandlers' implicitly has an 'any[]' type.
+apps/users-subgraph/src/users/users.resolver.ts(37,11): error TS7034: Variable 'edges' implicitly has type 'any[]' in some locations where its type cannot be determined.
+apps/users-subgraph/src/users/users.resolver.ts(39,7): error TS7005: Variable 'edges' implicitly has an 'any[]' type.
+apps/ai-agent-e2e/src/ai-agent/ai-agent.spec.ts(3,1): error TS2582: Cannot find name 'describe'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+apps/ai-agent-e2e/src/ai-agent/ai-agent.spec.ts(4,3): error TS2582: Cannot find name 'it'. Do you need to install type definitions for a test runner? Try `npm i --save-dev @types/jest` or `npm i --save-dev @types/mocha`.
+apps/ai-agent-e2e/src/ai-agent/ai-agent.spec.ts(7,5): error TS2304: Cannot find name 'expect'.
+apps/ai-agent-e2e/src/ai-agent/ai-agent.spec.ts(8,5): error TS2304: Cannot find name 'expect'.
+apps/ai-agent/src/ai/ai.controller.ts(1,34): error TS6133: 'Res' is declared but its value is never read.
+apps/ai-agent/src/ai/ai.controller.ts(2,1): error TS6133: 'Response' is declared but its value is never read.
+apps/ai-agent/src/ai/ai.controller.ts(9,31): error TS1272: A type referenced in a decorated signature must be imported with 'import type' or a namespace import when 'isolatedModules' and 'emitDecoratorMetadata' are enabled.
+apps/ai-agent/src/ai/infrastructure/langchain/langchain-agent.service.ts(4,59): error TS2307: Cannot find module 'langchain/agents' or its corresponding type declarations.
+apps/ai-agent/src/ai/infrastructure/langchain/langchain-agent.service.ts(6,36): error TS2307: Cannot find module '@langchain/core/prompts' or its corresponding type declarations.
+apps/ai-agent/src/ai/infrastructure/langchain/langchain-agent.service.ts(7,10): error TS2305: Module '"ai"' has no exported member 'LangChainAdapter'.

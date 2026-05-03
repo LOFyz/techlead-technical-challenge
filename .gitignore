@@ -22,7 +22,7 @@ node_modules
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
-!.vscode/extensions.json
+!.vscode/extensions.json 
 
 # misc
 /.sass-cache
@@ -33,6 +33,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/docs
 
 # System Files
 .DS_Store
@@ -48,3 +49,6 @@ Thumbs.db
 out
 
 test-output
+
+# sst
+.sst

@@ -31,6 +31,7 @@ services:
         define('GRAPHQL_JWT_AUTH_SECRET_KEY', '(t`jl0mh~nuI1|+YfC<0BcLIpf?^V|tIB$uOxkpE~TDMnQRddy[:LbCoZkhDpbux');
     volumes:
       - wp_data:/var/www/html
+      - ./docker/wordpress/plugins/cms-federation:/var/www/html/wp-content/plugins/cms-federation
     networks:
       - wp_network
 
@@ -59,9 +60,24 @@ services:
     networks:
       - wp_network
 
+  postgres_users:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: users_db_user
+      POSTGRES_PASSWORD: users_db_password
+      POSTGRES_DB: users_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - wp_network
+
 volumes:
   db_data:
   wp_data:
+  pg_data:
 
 networks:
   wp_network:

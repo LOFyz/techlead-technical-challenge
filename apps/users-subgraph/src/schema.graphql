@@ -1,0 +1,64 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@shareable"])
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo @shareable {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type User implements Node @key(fields: "id") {
+  id: ID!
+  name: String!
+  email: String!
+  emailVerified: Boolean!
+  image: String
+  createdAt: String!
+  updatedAt: String!
+  role: String!
+  sessions: SessionConnection!
+}
+
+type Session implements Node @key(fields: "id") {
+  id: ID!
+  userId: String!
+  expiresAt: String!
+  ipAddress: String
+  userAgent: String
+}
+
+type SessionConnection {
+  edges: [SessionEdge!]!
+  pageInfo: PageInfo!
+}
+
+type SessionEdge {
+  cursor: String!
+  node: Session!
+}
+
+type UserConnection {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
+
+type Query {
+  node(id: ID!): Node
+  me: User
+  user(id: ID!): User
+  users(first: Int, after: String, last: Int, before: String): UserConnection!
+}
+
+type Mutation {
+  updateUser(id: ID!, name: String, image: String): User!
+}
