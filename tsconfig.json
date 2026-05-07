@@ -20,6 +20,21 @@
     },
     {
       "path": "./libs/ai/infrastructure"
+    },
+    {
+      "path": "./libs/db"
+    },
+    {
+      "path": "./libs/ai"
+    },
+    {
+      "path": "./libs/domain"
+    },
+    {
+      "path": "./apps/migrator-e2e"
+    },
+    {
+      "path": "./apps/migrator"
     }
   ]
 }

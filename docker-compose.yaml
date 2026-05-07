@@ -2,82 +2,51 @@ version: "3.9"
 
 services:
   db:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - wp_network
-
-  wordpress:
-    build: ./docker/wordpress
-    restart: always
-    depends_on:
-      - db
-    environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
-      MYSQL_ROOT_PASSWORD: root
-      WORDPRESS_CONFIG_EXTRA: |
-        define('GRAPHQL_DEBUG', true);
-        define('WP_ENVIRONMENT_TYPE', 'local');
-        define('GRAPHQL_JWT_AUTH_SECRET_KEY', '(t`jl0mh~nuI1|+YfC<0BcLIpf?^V|tIB$uOxkpE~TDMnQRddy[:LbCoZkhDpbux');
-    volumes:
-      - wp_data:/var/www/html
-      - ./docker/wordpress/plugins/cms-federation:/var/www/html/wp-content/plugins/cms-federation
-    networks:
-      - wp_network
-
-  nginx:
-    image: nginx:latest
-    restart: always
-    depends_on:
-      - wordpress
-    ports:
-      - "8080:80"
-    volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    networks:
-      - wp_network
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    depends_on:
-      - db
-    ports:
-      - "8081:80"
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
-    networks:
-      - wp_network
-
-  postgres_users:
     image: postgres:15
     restart: always
     environment:
-      POSTGRES_USER: users_db_user
-      POSTGRES_PASSWORD: users_db_password
-      POSTGRES_DB: users_db
-    ports:
-      - "5432:5432"
+      POSTGRES_USER: wordpress
+      POSTGRES_PASSWORD: wordpress
+      POSTGRES_DB: wordpress
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
       - wp_network
 
+  wordpress:
+    image: wordpress:php8.2-fpm
+    restart: always
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:5432
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('GRAPHQL_DEBUG', true);
+        define('WP_ENVIRONMENT_TYPE', 'local');
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/wordpress:/var/www/html
+      - ./docker/wordpress/plugins:/var/www/html/wp-content/plugins
+    networks:
+      - wp_network
+
+  migrate:
+    build: ./migrator
+    restart: "no"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://wordpress:wordpress@db:5432/wordpress
+    networks:
+      - wp_network
+
 volumes:
-  db_data:
-  wp_data:
   pg_data:
 
 networks:
   wp_network:
+    driver: bridge
