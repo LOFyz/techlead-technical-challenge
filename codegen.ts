@@ -1,22 +1,28 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: './docs/schema.graphql', // Global schema
-  documents: ['apps/web/src/**/*.tsx', 'apps/web/src/**/*.ts'],
+  overwrite: true,
+  schema: [
+    'apps/users-subgraph/src/schema.graphql',
+    'apps/ai-agent/src/schema.graphql'
+  ],
   generates: {
-    'apps/web/src/graphql/': {
-      preset: 'client',
-      plugins: [],
-      presetConfig: {
-        gqlTagName: 'gql',
-        fragmentMasking: { unmaskFunctionName: 'getFragmentData' }
+    'libs/shared/types/src/lib/graphql-types.ts': {
+      plugins: [
+        'typescript',
+        'typescript-resolvers'
+      ],
+      config: {
+        useIndexSignature: true,
+        contextType: 'any',
+        federation: true
       }
     },
-    'apps/web/src/mocks/handlers.ts': {
-      plugins: ['typescript', 'typescript-operations', 'typescript-msw'],
+    'apps/web/src/graphql/': {
+      preset: 'client',
+      plugins: []
     }
-  },
-  ignoreNoDocuments: true,
+  }
 };
 
 export default config;
